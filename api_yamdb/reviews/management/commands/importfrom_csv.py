@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from . import _create_functions
-from reviews.models import User, Genre, Category, Title, Review, Comments
+from reviews.models import User, Genre, Category, Title, Review, Comment
 
 csv_names_model_function = (
     ('users', User, False),
@@ -14,7 +14,7 @@ csv_names_model_function = (
     ('titles', Title, _create_functions.create_titles),
     ('genre_title', None, _create_functions.create_title_genre),
     ('review', Review, _create_functions.create_reviews_comments),
-    ('comments', Comments, _create_functions.create_reviews_comments)
+    ('comments', Comment, _create_functions.create_reviews_comments)
 )
 
 
