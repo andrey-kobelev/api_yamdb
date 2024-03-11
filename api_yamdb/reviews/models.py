@@ -106,6 +106,7 @@ class AuthoredText(models.Model):
     class Meta:
         abstract = True
         ordering = ('pub_date',)
+        default_related_name = '%(class)ss'
 
 
 class Category(NamedSlug):
@@ -171,7 +172,6 @@ class Review(AuthoredText):
     class Meta(AuthoredText.Meta):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-        default_related_name = 'reviews'
         constraints = (models.UniqueConstraint(
             fields=('title', 'author'),
             name='unique_review'
@@ -191,7 +191,6 @@ class Comment(AuthoredText):
     class Meta(AuthoredText.Meta):
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
-        default_related_name = 'comments'
 
     def __str__(self):
         return self.name[:15]
